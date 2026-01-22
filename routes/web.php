@@ -2,6 +2,47 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Home page
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+// Product groups
+Route::prefix('product')->group(function () {
+    // /product
+    Route::get('/', function () {
+        $products = [
+            ['id' => 1, 'name' => 'iPhone 15', 'price' => 25000000],
+            ['id' => 2, 'name' => 'Samsung S24', 'price' => 22000000],
+        ];
+        return view('product.index', compact('products'));
+    })->name('product.index');
+
+    // /product_add
+    Route::get('/add', function () {
+        return view('product.add');
+    })->name('product.add');
+
+    // /product/{id}
+    Route::get('/{id?}', function ($id = '123') {
+        return "Chi tiết sản phẩm ID: $id";
+    })->where('id', '.*');
+});
+
+// Sinh vien
+Route::get('/sinhvien/{name?}/{mssv?}', function (
+    $name = "Bui Huy Hoang",
+    $mssv = "0005367"
+) {
+    return view('sinhvien', compact('name', 'mssv'));
+})->name('sinhvien');
+
+// Ban co
+Route::get('/banco/{n?}', function ($n = 8) {
+    return view('banco', compact('n'));
+})->name('banco');
+
+// 404 Page
+Route::fallback(function () {
+    return response()->view('error.404', [], 404);
 });
