@@ -23,6 +23,12 @@
                 Bàn cờ (Mặc định là 8x8)
             </a>
         </li>
+
+        <li>
+            <a href="{{ route('signin') }}">
+                Đăng ký tài khoản
+            </a>
+        </li>
     </ul>
 </body>
 </html>

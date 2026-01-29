@@ -1,17 +1,11 @@
-Bài tập 19/1/2026
-1. Tạo project laravel, tạo repo github, đẩy project lên repo
-2. Viết các route xử lý các yêu cầu sau
-    - "/": Trả về view home
-    - "/product": Trả về view product.index (có 1 vài sản phẩm mẫu, 
-                    nút thêm mới sản phẩm dẫn đến form thêm mới,
-                    fix trên html)
-    - "/product/add": Trả về view product.add (co form thêm mới
-                    sản phẩm) *Không có chức năng gì*
-    - "/product/{id}": id kiểu chuỗi, giá trị mặc định 123
-    - gom nhóm "/product"
-    - khi không tìm thấy route thì trả về trang error.404
-    - cho 1 ví dụ đặt tên route và gọi route qua tên
-    - "/sinhvien/{name}/ {mssv}": trả về Thông tin giới thiệu của
-        sinh viên làm bài, name mặc định "Bui Huy Hoang",
-        mssv mặc định "0005367"
-    - "/banco/{n}": trả về view banco hiển thị bàn cờ vua kích thước n*n
+29/1/26
+Commit 1:
+Tạo view SignIn để người dùng đăng ký tài khoản gồm các trường
+- Username, password, repass, mssv, lopmonhoc, gioitinh
+(VD: Hieulx, 123abc, 123abc, 26867, 67PM1, nam)
+Khi nhấn Sign In thì gọi đến hàm CheckSignIn
+Tạo AuthController có 2 hàm:
+- SignIn: Trả về view SignIn
+- CheckSignIn: Kiểm tra dữ liệu gửi từ form
+    Nếu trùng với thông tin sinh viên làm bài thì trả về "Đăng ký thành công!"
+    Nếu password != repass hoặc thông tin sai thì trả về "Đăng ký thất bại"
