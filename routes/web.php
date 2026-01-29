@@ -42,6 +42,18 @@ Route::get('/banco/{n?}', function ($n = 8) {
     return view('banco', compact('n'));
 })->name('banco');
 
+// Nhập tuổi
+Route::get('/age', function () {
+    return view('age');
+})->name('age');
+Route::post('/age', function (\Illuminate\Http\Request $request) {
+    session(['age' => $request->age]);
+    return redirect('/protected');
+});
+Route::get('/protected', function () {
+    return "Chào mừng bạn, đủ 18 tuổi!";
+})->middleware('check.age');
+
 // 404 Page
 Route::fallback(function () {
     return response()->view('error.404', [], 404);
@@ -49,5 +61,6 @@ Route::fallback(function () {
 
 use App\Http\Controllers\AuthController;
 
+// Đăng ký tài khoản
 Route::get('/signin', [AuthController::class, 'signIn'])->name('signin');
 Route::post('/checksignin', [AuthController::class, 'checkSignIn'])->name('check.signin');

@@ -29,6 +29,12 @@
                 Đăng ký tài khoản
             </a>
         </li>
+
+        <li>
+            <a href="{{ route('age') }}">
+                Nhập tuổi
+            </a>
+        </li>
     </ul>
 </body>
 </html>
