@@ -60,7 +60,12 @@ Route::fallback(function () {
 });
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 
 // Đăng ký tài khoản
 Route::get('/signin', [AuthController::class, 'signIn'])->name('signin');
 Route::post('/checksignin', [AuthController::class, 'checkSignIn'])->name('check.signin');
+
+// Thực hành 9/2/2026
+Route::resource('categories', CategoryController::class);
+// Thực hành 9/2/2026 --- END ---
