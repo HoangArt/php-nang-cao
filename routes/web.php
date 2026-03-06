@@ -8,19 +8,19 @@ Route::get('/', function () {
 });
 
 // Product groups
-Route::prefix('product')->group(function () {
+Route::prefix('product_old')->group(function () {
     // /product
     Route::get('/', function () {
         $products = [
             ['id' => 1, 'name' => 'iPhone 15', 'price' => 25000000],
             ['id' => 2, 'name' => 'Samsung S24', 'price' => 22000000],
         ];
-        return view('product.index', compact('products'));
+        return view('product_old.index', compact('products'));
     })->name('product.index');
 
     // /product_add
     Route::get('/add', function () {
-        return view('product.add');
+        return view('product_old.add');
     })->name('product.add');
 
     // /product/{id}
@@ -61,6 +61,7 @@ Route::fallback(function () {
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 
 // Đăng ký tài khoản
 Route::get('/signin', [AuthController::class, 'signIn'])->name('signin');
@@ -69,3 +70,7 @@ Route::post('/checksignin', [AuthController::class, 'checkSignIn'])->name('check
 // Thực hành 9/2/2026
 Route::resource('categories', CategoryController::class);
 // Thực hành 9/2/2026 --- END ---
+
+// Thực hành 2/3/2026
+Route::resource('products', ProductController::class);
+// Thực hành 2/3/2026 --- END ---
